@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo list</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function(){
+            var items = [
+                "Kupić lody",
+                "Zamówić słonia",
+                "Ubrać psa"
+            ];
+            $.each(items, function(){
+                $('#item').append("<li><button>X</button><span> "+this+" </span></li>");
+            });
+            $('button').click(function(){
+                    var text = $(this).next().text();
+                    $(this).next().text(text+" : zrobione!");
+                    $(this).parent().css("color", "lightgrey")
+                    $(this).remove();
+            });
+
+        });
+        
+    </script>
+    <style>
+    li {
+        margin: 16px 0px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <h2>Todo list</h2>
+        <ul id="item">
+        
+        </ul>
+    </div>
+</body>
+</html>

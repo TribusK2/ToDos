@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo list</title>
+    <script>
+        
+        window.onload = function(){
+            var items = [
+                "Kupić lody",
+                "Zamówić słonia",
+                "Ubrać psa"
+            ];
+            var todo = "";
+            for(i=0; i < items.length; i++){
+                var todo = todo+"<li>"+"<button id='btn"+i+"'>X</button>"+"<span> "+items[i]+" </span>"+"</li>";
+            };
+            document.getElementById("item").innerHTML = todo;
+            
+            for(i=0; i < items.length; i++){
+                var btn = document.getElementById("btn"+i);
+                btn.addEventListener("click", function(){
+                    var liElement = this.parentElement;
+                    var text = liElement.getElementsByTagName("span")[0].innerHTML;
+                    liElement.innerHTML = text+" : zrobione!";
+                    liElement.setAttribute("style", "color: lightgrey");
+                });
+            };
+
+        };
+    </script>
+    <style>
+    li {
+        margin: 16px 0px;
+    }
+    </style>
+</head>
+<body>
+    <div class="wraper">
+        <h2>Todo list</h2>
+        <ul id="item">
+        
+        </ul>
+    </div>
+</body>
+</html>

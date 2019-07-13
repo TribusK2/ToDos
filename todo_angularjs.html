@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo list</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    
+    <script>
+        var myApp = angular.module('myApp', []);
+        myApp.controller('myCtrl', function($scope) {
+            $scope.items = [
+                "Kupić lody",
+                "Zamówić słonia",
+                "Ubrać psa"
+            ];
+            $scope.delete = function(){
+                this.item += " : zrobione!";
+                this.color = {'color': 'lightgrey'};
+                this.isHide = true;
+            };
+        });
+
+    </script>
+</head>
+<body  ng-app="myApp">
+    <div ng-controller="myCtrl" class="wraper">
+        <h2>Todo list</h2>
+        <ul ng-repeat="item in items">
+            <li ng-style="color"><button ng-hide="isHide" ng-click="delete()">X</button><span> {{item}} </span></li>
+        </ul>
+    </div>
+</body>
+</html>
